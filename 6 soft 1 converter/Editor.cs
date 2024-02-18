@@ -3,6 +3,7 @@
     public class Editor
     {
         public static string alphabet = "0123456789ABCDEF";
+        public static int maxLength = 36;
 
         public string firstNumber = "";
         private bool hasDelimeter = false;

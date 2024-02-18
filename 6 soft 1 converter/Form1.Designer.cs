@@ -539,11 +539,13 @@
             // 
             AllHistory.Anchor = AnchorStyles.None;
             AllHistory.BackColor = SystemColors.Control;
+            AllHistory.BorderStyle = BorderStyle.None;
             AllHistory.FormattingEnabled = true;
             AllHistory.ItemHeight = 15;
-            AllHistory.Location = new Point(3, 49);
+            AllHistory.Location = new Point(3, 51);
             AllHistory.Name = "AllHistory";
-            AllHistory.Size = new Size(270, 334);
+            AllHistory.ScrollAlwaysVisible = true;
+            AllHistory.Size = new Size(270, 330);
             AllHistory.TabIndex = 0;
             // 
             // label1

@@ -71,10 +71,20 @@ namespace _6_soft_1_converter
 
         private void DoCommand(int tag)
         {
+            string result;
+
             if (tag == 19)
                 FirstNumber.Text = controller.editor.DeleteUnnecessarySymbols();
 
-            string result = controller.ButtonClicked(tag);
+            try
+            {
+                result = controller.ButtonClicked(tag);
+            }
+            catch
+            {
+                MessageBox.Show("Введенное для преобразования число слишком большое");
+                return;
+            }
 
             if (controller.St == Controller.State.Editing)
             {
@@ -113,7 +123,16 @@ namespace _6_soft_1_converter
             CurrentNotationOfSecondNumber.Text = number.ToString();
             controller.p2 = number;
             if (controller.St == Controller.State.Converted)
-                SecondNumber.Text = controller.ButtonClicked(19);
+            {
+                try
+                {
+                    SecondNumber.Text = controller.ButtonClicked(19);
+                }
+                catch
+                {
+                    MessageBox.Show("Введенное для преобразования число слишком большое");
+                }
+            }
         }
 
         private void Interface_KeyPress(object sender, KeyPressEventArgs e)
@@ -127,26 +146,6 @@ namespace _6_soft_1_converter
             else if (e.KeyChar == 8) i = 17;
             else if (e.KeyChar == 27) i = 18;
             else if (e.KeyChar == 13) i = 19;
-            //else if (e.KeyChar == 37 && TBOfFirstNumber.Value > TBOfFirstNumber.Minimum)
-            //{
-            //    CurrentNotationOfFirstNumber.Text = (--TBOfFirstNumber.Value).ToString();
-            //    controller.p1--;
-            //}
-            //else if (e.KeyChar == 39 && TBOfFirstNumber.Value < TBOfFirstNumber.Maximum)
-            //{
-            //    CurrentNotationOfFirstNumber.Text = (++TBOfFirstNumber.Value).ToString();
-            //    controller.p1++;
-            //}
-            //else if (e.KeyChar == 40 && TBOfSecondNumber.Value > TBOfSecondNumber.Minimum)
-            //{
-            //    CurrentNotationOfSecondNumber.Text = (--TBOfSecondNumber.Value).ToString();
-            //    controller.p2--;
-            //}
-            //else if (e.KeyChar == 38 && TBOfSecondNumber.Value < TBOfSecondNumber.Maximum)
-            //{
-            //    CurrentNotationOfSecondNumber.Text = (++TBOfSecondNumber.Value).ToString();
-            //    controller.p2++;
-            //}
             if (i != -1 && (i < controller.p1) || (i >= 16)) DoCommand(i);
         }
 

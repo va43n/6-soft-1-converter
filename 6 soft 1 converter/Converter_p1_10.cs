@@ -15,7 +15,8 @@
             }
             else
                 weightPower = number.Length - 1;
-            weightPower = Convert.ToInt32(Math.Pow(p1, weightPower));
+
+                weightPower = Convert.ToInt32(Math.Pow(p1, weightPower));
 
             return P1ToTen(numberWithoutDelimeter, p1, weightPower);
         }

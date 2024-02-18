@@ -14,7 +14,13 @@
         }
         public override string ToString()
         {
-            return firstNumber + " (" + p1.ToString() + ") = " + secondNumber + " (" + p2.ToString() + ")";
+            string newFirst = firstNumber, newSecond = secondNumber;
+            if (newFirst.Length > 15)
+                newFirst = firstNumber[0..12] + "...";
+            if (newSecond.Length > 15)
+                newSecond = secondNumber[0..12] + "...";
+
+            return newFirst + " (" + p1.ToString() + ") = " + newSecond + " (" + p2.ToString() + ")";
         }
     }
 

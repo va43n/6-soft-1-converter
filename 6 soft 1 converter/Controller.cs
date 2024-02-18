@@ -1,4 +1,6 @@
-﻿namespace _6_soft_1_converter
+﻿using static System.Runtime.InteropServices.JavaScript.JSType;
+
+namespace _6_soft_1_converter
 {
     public class Controller
     {
@@ -24,8 +26,24 @@
                 double number_10;
                 string number_p2;
 
+                int delimeterPosition = editor.firstNumber.IndexOf('.');
+                double weightPower;
+
+                if (delimeterPosition != -1)
+                    weightPower = delimeterPosition - 1;
+                else
+                    weightPower = editor.firstNumber.Length - 1;
+                if (Math.Pow(p1, weightPower) * Editor.alphabet.IndexOf(editor.firstNumber[0]) > Math.Pow(2, 31))
+                    throw new Exception("a");
+
                 number_10 = Converter_p1_10.ConvertValue(editor.firstNumber, p1);
                 number_p2 = Converter_10_p2.ConvertValue(number_10, p2, CalculateAccuracy());
+
+                if (editor.firstNumber.Length > Editor.maxLength || number_p2.Length > Editor.maxLength)
+                {
+                    throw new Exception("a");
+                }
+
                 St = State.Converted;
                 if (editor.firstNumber == "")
                     history.AddRecord(p1, p2, "0", "0");
@@ -36,6 +54,10 @@
             else
             {
                 St = State.Editing;
+                if (tag < 16 && editor.firstNumber.Length > Editor.maxLength)
+                {
+                    throw new Exception("a");
+                }
                 return editor.EditSomething(tag);
             }
         }
