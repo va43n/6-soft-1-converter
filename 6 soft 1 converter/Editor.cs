@@ -5,37 +5,34 @@
         public static string alphabet = "0123456789ABCDEF";
         public static int maxLength = 36;
 
-        public string firstNumber = "";
+        public string firstNumber = "0";
         private bool hasDelimeter = false;
 
         public string EditSomething(int tag)
         {
-            if (tag == 0 && firstNumber == "")
-                return "0";
-            else if (tag < 16)
-                firstNumber += alphabet[tag];
+            if (tag < 16)
+                firstNumber = firstNumber == "0" ? alphabet[tag].ToString() : firstNumber + alphabet[tag];
+                
             else if (tag == 16 && !hasDelimeter)
             {
                 hasDelimeter = true;
-                if (firstNumber == "")
-                    firstNumber = "0.";
-                else
-                    firstNumber += ".";
+                firstNumber += ".";
             }
             else if (tag == 17)
             {
-                if (firstNumber == "")
-                    return "0";
-                if (firstNumber[firstNumber.Length - 1] == '.')
+                if (firstNumber.Length == 1)
+                {
+                    firstNumber = "0";
+                    return firstNumber;
+                }
+                else if (firstNumber[firstNumber.Length - 1] == '.')
                     hasDelimeter = false;
                 firstNumber = firstNumber.Remove(firstNumber.Length - 1, 1);
-                if (firstNumber == "")
-                    return "0";
             }
             else if (tag == 18)
             {
                 hasDelimeter = false;
-                firstNumber = "";
+                firstNumber = "0";
                 return "0";
             }
 
@@ -51,8 +48,7 @@
                     hasDelimeter = false;
                 firstNumber = firstNumber.Remove(i, 1);
             }
-            if (firstNumber == "")
-                return "0";
+                
             return firstNumber;
         }
 

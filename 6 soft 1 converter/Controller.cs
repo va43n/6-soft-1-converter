@@ -45,10 +45,8 @@ namespace _6_soft_1_converter
                 }
 
                 St = State.Converted;
-                if (editor.firstNumber == "")
-                    history.AddRecord(p1, p2, "0", "0");
-                else
-                    history.AddRecord(p1, p2, editor.firstNumber, number_p2);
+                history.AddRecord(p1, p2, editor.firstNumber, number_p2);
+
                 return number_p2;
             }
             else
