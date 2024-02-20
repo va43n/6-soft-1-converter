@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.9.34607.119
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "6 soft 1 converter", "6 soft 1 converter\6 soft 1 converter.csproj", "{BE6C0A0C-A235-40DA-B56B-75375A9C5217}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "6 soft 1 converter", "6 soft 1 converter\6 soft 1 converter.csproj", "{BE6C0A0C-A235-40DA-B56B-75375A9C5217}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

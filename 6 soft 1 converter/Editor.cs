@@ -47,6 +47,8 @@
             {
                 if (firstNumber[i] != '0' && firstNumber[i] != '.' || !hasDelimeter)
                     break;
+                if (firstNumber[i] == '.')
+                    hasDelimeter = false;
                 firstNumber = firstNumber.Remove(i, 1);
             }
             if (firstNumber == "")

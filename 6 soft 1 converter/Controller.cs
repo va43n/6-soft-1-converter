@@ -34,14 +34,14 @@ namespace _6_soft_1_converter
                 else
                     weightPower = editor.firstNumber.Length - 1;
                 if (Math.Pow(p1, weightPower) * Editor.alphabet.IndexOf(editor.firstNumber[0]) > Math.Pow(2, 31))
-                    throw new Exception("a");
+                    throw new Exception("Too big number");
 
                 number_10 = Converter_p1_10.ConvertValue(editor.firstNumber, p1);
                 number_p2 = Converter_10_p2.ConvertValue(number_10, p2, CalculateAccuracy());
 
                 if (editor.firstNumber.Length > Editor.maxLength || number_p2.Length > Editor.maxLength)
                 {
-                    throw new Exception("a");
+                    throw new Exception("Too big number");
                 }
 
                 St = State.Converted;
@@ -56,7 +56,7 @@ namespace _6_soft_1_converter
                 St = State.Editing;
                 if (tag < 16 && editor.firstNumber.Length > Editor.maxLength)
                 {
-                    throw new Exception("a");
+                    throw new Exception("Too big number");
                 }
                 return editor.EditSomething(tag);
             }
